@@ -16,7 +16,7 @@
     "npm-run-all": "4.1.5"
   },
   "scripts": {
-    "http-server": "http-server --silent -p 8888",
+    "http-server": "http-server --silent -p 7777",
     "blc": "blc --exclude-external --filter-level 2 --follow --get --ordered --recursive --host-requests 4 --input http://localhost:8888/",
     "check-broken-links": "npm-run-all --parallel --race \"http-server -- build/checklinks\" blc"
   },
