@@ -1,25 +1,26 @@
-# Jenkins 2024 board and officer elections
-- :href: /blog/2024/08/01/board-officer-election-announcement/
-  :title: Jenkins Elections 2024 Announcement
-  :intro: Nominations for board and officer positions are now open.
-    Sign up and nominate someone today to shape the future of Jenkins!
+- :href: /blog/2024/10/04/content-security-policy-grant/
+  :title: Alpha Omega Foundation Content Security Policy Grant
+  :intro: Alpha Omega Foundation has provided a grant to Jenkins to improve the implementation of Content Security Policy.
+    Read more about what this means for the Jenkins project.
   :image:
-    :src: /images/governance/elections/2024/2024-announcement-opengraph.svg
+    :src: /images/post-images/2024/10/04/content-security-policy-grant.png
     :height: 320px
   :call_to_action:
-    :text: Sign up & Nominate someone today!
-    :href: /blog/2024/08/01/board-officer-election-announcement/
+    :text: More info
+    :href: /blog/2024/10/04/content-security-policy-grant/
 
-# DevOpsWorld 2024
-- :href: https://www.devopsworld.com/
-  :title: DevOps World Virtual 2024
-  :intro: Jenkins board & officers will be presenting key priorities and resolving issues we have in the project at the moment.
+# Jenkins 2024 board and officer statements
+- :href: /blog/2024/10/03/jenkins-election-candidates/
+  :title: Jenkins Elections 2024 Voting is now open!
+  :intro: Voting for 2024 Jenkins governance board elections is now open until November 31, 2024.
+    Read the candidate statements to learn what they hope to bring to the project and what Jenkins means to them.
   :image:
-    :src: images/jumbotron/2024-DW-Announcement-jumbotron.png
+    :src: /images/governance/elections/2024/2024-candidate-statements-opengraph.svg
     :height: 320px
   :call_to_action:
-    :text: Join Us!
-    :href: https://www.devopsworld.com/#register-now
+    :text: Read the candidate statements here!
+    :href: /blog/2024/09/25/board-officer-election-announcement/
+
 #
 - :href: https://devopsdozen.com/devops-dozen-2023-community-award-winners/
   :title: Jenkins wins DevOps Dozen award
