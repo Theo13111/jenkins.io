@@ -11366,7 +11366,8 @@
           - pull: 5324
           - url: https://github.com/stapler/stapler/releases/tag/stapler-parent-1.263
             title: Stapler 1.263 release notes
-          - url: https://commons.apache.org/proper/commons-beanutils/changes-report.html#a1.9.4
+          - url: 
+              https://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/RELEASE-NOTES.txt
             title: Apache commons beanutils 1.9.4 release notes
         message: |-
           Internal: Update Stapler from 1.262.1 to 1.263 to use latest Apache commons-beanutils.
@@ -24621,7 +24622,7 @@
           - url: https://github.com/spring-projects/spring-security/releases/tag/6.3.3
             title: Spring Security 6.3.3 release notes
           - url: https://projects.eclipse.org/releases/jakarta-ee-9
-            title: Jarkata EE 9 release page
+            title: Jakarta EE 9 release page
           - url: https://github.com/jenkinsci/ldap-plugin/releases/tag/733.vd3700c27b_043
             title: LDAP plugin 733.vd3700c27b_043
           - url: 
@@ -26563,7 +26564,7 @@
   # pull: 10552 (PR title: Update Yarn to v4.9.1)
 
   - version: '2.507'
-    date: 2025-04-21
+    date: 2025-04-22
     changes:
       - type: major rfe
         category: major rfe
@@ -26610,6 +26611,495 @@
   # pull: 10573 (PR title: Update dependency postcss-preset-env to v10.1.6)
   # pull: 10574 (PR title: Update access-modifier.version to v1.35)
   # pull: 10575 (PR title: Update bridge-method-injector.version to v1.31)
+
+  - version: '2.508'
+    date: 2025-04-29
+    changes: []
+
+  - version: '2.509'
+    date: 2025-05-06
+    banner: >
+      Starting with Jenkins 2.509, the default Docker images (<code>2.509</code>,
+      <code>latest</code>, <code>alpine</code>, <code>slim</code>,
+      ...) use Java 21 unless specifically tagged with the <code>jdk17</code> string.
+      Refer to the <a href="https://github.com/jenkinsci/docker/releases/tag/2.509">Docker
+      2.509 changelog</a> or <a href="https://github.com/jenkinsci/docker/pull/2008">pull
+      request for this update</a> for more details.
+    changes:
+      - type: major rfe
+        category: major rfe
+        pull: 10351
+        issue: 75350
+        authors:
+          - alecharp
+        pr_title: "[JENKINS-75350] Displays plugin health score in Plugin Manager"
+        message: |-
+          Display plugin health score from the Plugin Manager.
+      - type: rfe
+        category: rfe
+        pull: 10521
+        issue: 75465
+        authors:
+          - gbhat618
+        pr_title: "[JENKINS-75465] (Recreate) Delete RunIdMigrator as it has been
+          10 years since this migration"
+        message: |-
+          New jobs no longer create an empty <code>legacyIds</code> marker file in the builds directory and existing <code>legacyIds</code> files will be deleted upon upgrade to reduce inode usage.
+      - type: rfe
+        category: rfe
+        pull: 10604
+        issue: 75533
+        authors:
+          - daniel-beck
+        pr_title: "[JENKINS-75533] Remove jbcrypt mindrot, use Spring Security instead"
+        message: |-
+          Jenkins' own user database no longer accepts new passwords longer than supported by bcrypt (72 bytes).
+          Users with longer passwords are advised to change their password.
+      - type: rfe
+        category: rfe
+        pull: 10604
+        issue: 75533
+        authors:
+          - daniel-beck
+        pr_title: "[JENKINS-75533] Remove jbcrypt mindrot, use Spring Security instead"
+        message: |-
+          Remove jbcrypt library.
+          If you're using Active Directory plugin, make sure to update to version 2.40 at the same time as updating Jenkins.
+      - type: bug
+        category: bug
+        pull: 10555
+        authors:
+          - jglick
+          - Vlatombe
+        pr_title: Run `GlobalBuildDiscarderListener` asynch
+        message: |-
+          When completing a build, look for older builds to rotate asynchronously, in case this process is expensive.
+      - type: bug
+        category: bug
+        pull: 10611
+        issue: 75615
+        authors:
+          - mawinter69
+        pr_title: "[JENKINS-75615] remove jenkins-avatar class from header icons other
+          than user icon"
+        message: |-
+          Fix the display of icons in the header by only applying the <code>jenkinsavatar</code> class to user icons, not the other header icons.
+      - type: bug
+        category: bug
+        pull: 10515
+        issue: 75081
+        authors:
+          - jglick
+        pr_title: "[JENKINS-75081] Avoid heap allocation when rendering large logs"
+        message: |-
+          Reduce heap usage of various HTTP endpoints serving large build logs.
+      - type: rfe
+        category: developer
+        pull: 10604
+        issue: 75533
+        authors:
+          - daniel-beck
+        pr_title: "[JENKINS-75533] Remove jbcrypt mindrot, use Spring Security instead"
+        message: |-
+          Developer: Remove <code>org.connectbot:jbcrypt</code> library from core BOM.
+
+  # pull: 10606 (PR title: Update stapler.version to v1981 (major))
+  # pull: 10612 (PR title: Remove legacy compat for LogRecorder)
+  # pull: 10613 (PR title: Let renovate automatically update to node LTS versions)
+  # pull: 10614 (PR title: Update babel monorepo to v7.27.1)
+  # pull: 10615 (PR title: Simpler `InboundAgentRule.AgentArguments` constructor)
+  # pull: 10616 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2443)
+  # pull: 10617 (PR title: Update Winstone and Jetty)
+  # pull: 10618 (PR title: Update dependency io.jenkins.plugins:ionicons-api to v87)
+
+  # pull: 10564 (PR title: Tweak 'App bar' height)
+  # pull: 10569 (PR title: Simplify `LoadStatistics`)
+  # pull: 10584 (PR title: Update dependency sass to v1.87.0)
+  # pull: 10585 (PR title: Update dependency io.jenkins.plugins:design-library to v376)
+  # pull: 10586 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2435)
+  # pull: 10587 (PR title: Do not inspect non-`AbstractProject` for `Computer.getBuilds`)
+  # pull: 10588 (PR title: Update stapler.version to v1971 (major))
+  # pull: 10589 (PR title: Update dependency io.jenkins.plugins:gson-api to v2.13.1-139.v4569c2ef303f)
+  # pull: 10590 (PR title: Update dawidd6/action-send-mail action to v5)
+  # pull: 10591 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2438)
+  # pull: 10592 (PR title: Fill in since annotations)
+  # pull: 10593 (PR title: Update dependency org.jenkins-ci.plugins:matrix-project to v849)
+  # pull: 10594 (PR title: Update node.js from 20.19.0 to 22.15.0)
+  # pull: 10595 (PR title: More helpful `SlaveComputer.toString`)
+  # pull: 10597 (PR title: Update dependency node to v20.19.1)
+  # pull: 10598 (PR title: Update dependency io.jenkins.plugins:design-library to v380)
+  # pull: 10599 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2439)
+  # pull: 10600 (PR title: Update dependency stylelint to v16.19.0)
+  # pull: 10601 (PR title: [JENKINS-75605] sl message catalog typo fix)
+  # pull: 10602 (PR title: Update dependency io.jenkins.plugins:echarts-api to v5.6.0-4)
+  # pull: 10603 (PR title: Update dependency com.puppycrawl.tools:checkstyle to v10.23.1)
+  # pull: 10605 (PR title: Update dependency webpack to v5.99.7)
+  # pull: 10608 (PR title: Update dependency stylelint to v16.19.1)
+
+
+  - version: '2.510'
+    date: 2025-05-13
+    changes:
+      - type: bug
+        category: bug
+        pull: 10629
+        issue: 75634
+        authors:
+          - janfaracik
+        pr_title: "[JENKINS-75634] Restore children context menu for breadcrumbs"
+        message: |-
+          Restore the children context menu for breadcrumbs.
+      - type: bug
+        category: bug
+        pull: 10627
+        issue: 75621
+        authors:
+          - janfaracik
+          - krisstern
+        pr_title: "[JENKINS-75621] Fix visual regression on Thread Dump page"
+        message: |-
+          Remove overlapping text from the <strong>Thread Dump</strong> page.
+      - type: bug
+        category: bug
+        pull: 10623
+        authors:
+          - jglick
+        pr_title: Render `t:artifactList` lazily
+        message: |-
+          Defer rendering a build's artifact list to a background request to avoid expensive computations.
+
+  # pull: 10500 (PR title: Update Stapler from 1981 to 1982, add test for jenkinsci/stapler#655)
+  # pull: 10620 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2444)
+  # pull: 10621 (PR title: Update dependency org.jenkins-ci.main:remoting to v3309)
+  # pull: 10622 (PR title: Update eslint monorepo to v9.26.0)
+  # pull: 10624 (PR title: Update dependency io.jenkins.plugins:ionicons-api to v88)
+  # pull: 10626 (PR title: Friendlier error message when the password is too long)
+  # pull: 10633 (PR title: Update dependency org.jenkins-ci:jenkins to v1.132)
+  # pull: 10634 (PR title: `RunListener.createLoadAllower`)
+  # pull: 10635 (PR title: Update dependency webpack to v5.99.8)
+  # pull: 10636 (PR title: Update babel monorepo to v7.27.2)
+  # pull: 10637 (PR title: Update dependency eslint-config-prettier to v10.1.3)
+  # pull: 10638 (PR title: Update dependency globals to v16.1.0)
+  # pull: 10639 (PR title: Update stapler.version to v1983 (major))
+  # pull: 10640 (PR title: Update dependency eslint-config-prettier to v10.1.5)
+  # pull: 10641 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2447)
+  # pull: 10642 (PR title: Update dependency org.jenkins-ci.plugins:junit to v1334)
+
+  - version: '2.511'
+    date: 2025-05-20
+    changes:
+      - type: rfe
+        category: rfe
+        pull: 10628
+        authors:
+          - strangelookingnerd
+          - krisstern
+        pr_title: Remove deprecated IOException2
+        message: |-
+          Remove deprecated <code>hudson.util.IOException2</code>.
+      - type: major bug
+        category: regression
+        pull: 10647
+        issue: 75664
+        authors:
+          - jglick
+        pr_title: "[JENKINS-75664] Revert call to `BoundObjectTable#releaseMe`"
+        message: |-
+          A change to lazy rendering in 2.510 caused a regression in certain GUI configuration scenarios, such as adding two build steps of the same type, like <code>Execute shell</code>, to a freestyle project at the same time.
+          The workaround is to add one builder, save, reload the page, and then add the next.
+      - type: bug
+        category: bug
+        pull: 10655
+        authors:
+          - car-roll
+        pr_title: handle ConnectionRefusalException
+        message: |-
+          Catch <code>ConnectionRefusalException</code> when thrown by a websocket agent connection attempt.
+
+  # pull: 10634 (PR title: `RunListener.createLoadAllower`)
+  # pull: 10643 (PR title: Update dependency org.jenkins-ci.plugins.workflow:workflow-api to v1373)
+  # pull: 10644 (PR title: Update Winstone and Jetty)
+  # pull: 10646 (PR title: Update dependency stylelint-config-standard-scss to v15)
+  # pull: 10648 (PR title: Update dependency sass to v1.88.0)
+  # pull: 10649 (PR title: Update dependency org.jenkins-ci.plugins:junit to v1335)
+  # pull: 10652 (PR title: Update Node.js to v22.15.1)
+  # pull: 10653 (PR title: Update dependency org.springframework:spring-framework-bom to v6.2.7)
+  # pull: 10654 (PR title: Add retry to flaky test in ResponseTimeMonitorTest)
+  # pull: 10656 (PR title: Relax checks for flaky tests in ComputerStateTest)
+  # pull: 10657 (PR title: Update dependency io.jenkins.plugins:commons-text-api to v1.13.1-176.v74d88f22034b_)
+  # pull: 10658 (PR title: Update dependency sass to v1.89.0)
+  # pull: 10665 (PR title: Update eslint monorepo to v9.27.0)
+
+  - version: '2.512'
+    date: 2025-05-27
+    changes:
+      - type: rfe
+        category: rfe
+        pull: 10650
+        issue: 75388
+        authors:
+          - daniel-beck
+        pr_title: "[JENKINS-75388] Remove `?path` and `?pattern` support from DBS"
+        message: |-
+          Remove support for <code>?path</code> and <code>?pattern</code> query parameters for directory listings of user content, such as workspaces, archived artifacts and others.
+          The filter text box now uses JavaScript instead of a form submission to navigate to the expected URL.
+          Programmatic users are advised to replace <code>?path</code> or <code>?pattern</code> in their requests with the resulting redirect URL, whose behavior did not change from before.
+      - type: rfe
+        category: rfe
+        pull: 10663
+        authors:
+          - mawinter69
+        pr_title: Remove pam-auth from suggested plugins
+        message: |-
+          Remove PAM Authentication plugin from suggested plugins.
+      - type: rfe
+        category: rfe
+        authors:
+          - slide
+        pr_title: "Add Powershell script to update registry information after war
+          update"
+        references:
+          - url: https://github.com/jenkinsci/packaging/pull/494
+            title: Packaging PR 494
+        message: |-
+          Add Powershell script to Windows installer to update registry information after WAR update.
+
+  # pull: 10660 (PR title: Update xmlunit.version to v2.10.1)
+  # pull: 10661 (PR title: Update dependency org.jenkins-ci.plugins:bouncycastle-api to v2.30.1.80-261.v00c0e2618ec3)
+  # pull: 10664 (PR title: Update dependency org.springframework.security:spring-security-bom to v6.5.0)
+  # pull: 10666 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2451)
+  # pull: 10668 (PR title: Use XMLUnit BOM)
+  # pull: 10669 (PR title: Update mheap/github-action-required-labels digest to fb29a14)
+  # pull: 10670 (PR title: Update dependency stylelint-config-standard-scss to v15.0.1)
+  # pull: 10671 (PR title: Update Node.js to v22.16.0)
+  # pull: 10672 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2455)
+  # pull: 10673 (PR title: Replaced groovy file with jelly for `GlobalSCMRetryCountConfiguration`)
+  # pull: 10674 (PR title: Removed dead code from `Queue.ItemList`)
+  # pull: 10675 (PR title: Update dependency com.puppycrawl.tools:checkstyle to v10.24.0)
+  # pull: 10677 (PR title: Update dependency org.jenkins-ci.plugins:jackson2-api to v2.19.0-404.vb_b_0fd2fea_e10)
+  # pull: 10679 (PR title: Update dependency org.xmlunit:xmlunit-bom to v2.10.2)
+  # pull: 10680 (PR title: Update dependency webpack to v5.99.9)
+  # pull: 10682 (PR title: Update jenkins/ath Docker tag to v6242)
+  # pull: 10684 (PR title: Update dependency io.jenkins.plugins:json-api to v20250517)
+
+  - version: '2.513'
+    date: 2025-06-03
+    changes:
+      - type: rfe
+        category: rfe
+        pull: 10712
+        authors:
+          - NotMyFault
+        pr_title: Add copy-to-clipboard button to oops' stacktrace
+        message: |-
+          Add a copy to clipboard button to the Jenkins error page.
+      - type: rfe
+        category: rfe
+        pull: 10366
+        authors:
+          - AhmedFatthy1040
+        pr_title: Complete Japanese translation for keepDependencies help file
+        message: |-
+          Complete the Japanese translation for <code>keepDependencies</code> help file.
+      - type: rfe
+        category: rfe
+        authors:
+          - daniel-beck
+        pr_title: Set `SameSite` attribute on cookies
+        message: |-
+          When running in Jetty (when using <code>java -jar jenkins.war</code>, the default), set the <code>SameSite</code> attribute for cookies to provide additional protection from some CSRF vulnerabilities.
+          By default this sets the attribute to <code>Lax</code>.
+          This can be changed by setting the Java system property <code>jenkins.security.JettySameSiteCookieSetup.sameSiteDefault</code>.
+          Users of <a href="https://plugins.jenkins.io/azure-ad/">Microsoft Entra ID (previously Azure AD) Plugin</a> are advised to update the plugin to version 580.v2f665882b_a_71 or newer at the same time.
+        references:
+          - pull: 10630
+          - url: 
+              /doc/book/managing/system-properties/#jenkins-security-jettysamesitecookiesetup-samesitedefault
+            title: Jenkins features controlled by system properties
+      - type: rfe
+        category: rfe
+        pull: 10687
+        authors:
+          - janfaracik
+        pr_title: Use Jenkins color palette for CodeMirror
+        message: |-
+          Use the Jenkins color palette for CodeMirror.
+      - type: rfe
+        category: rfe
+        pull: 10379
+        authors:
+          - mawinter69
+        pr_title: Allow to configure the views tab bar per user
+        message: |-
+          Allow the <strong>Views</strong> tab bar to be configured per user.
+      - type: bug
+        category: bug
+        pull: 10667
+        issue: 75635
+        authors:
+          - ridemountainpig
+        pr_title: "[JENKINS-75635] Fix dropdown menu close when hover on sub dropdown"
+        message: |-
+          Do not close the dropdown menu when hovering over the submenu of the dropdown menu.
+
+  # pull: 10559 (PR title: Migrate tests to JUnit5 (cli))
+  # pull: 10576 (PR title: Migrate tests to JUnit5 (core / hudson / 1))
+  # pull: 10577 (PR title: Migrate tests to JUnit5 (core / hudson / 2))
+  # pull: 10578 (PR title: Migrate tests to JUnit5 (core / jenkins / 3))
+  # pull: 10579 (PR title: Migrate tests to JUnit5 (test / hudson / 1))
+  # pull: 10580 (PR title: Migrate tests to JUnit5 (test / hudson / 2))
+  # pull: 10581 (PR title: Migrate tests to JUnit5 (test / jenkins / 3))
+  # pull: 10610 (PR title: Update a single `InterruptedBuildAction` rather than creating a second one)
+  # pull: 10686 (PR title: Update commons-fileupload2.version to v2.0.0-M3)
+  # pull: 10688 (PR title: Update dependency globals to v16.2.0)
+  # pull: 10690 (PR title: Update dependency org.jenkins-ci.plugins:cloudbees-folder to v6.1023.v4fcb_72152519)
+  # pull: 10691 (PR title: Update dependency commons-beanutils:commons-beanutils to v1.11.0 [SECURITY])
+  # pull: 10692 (PR title: Update jenkins/ath Docker tag to v6250)
+  # pull: 10693 (PR title: Update dependency webpack-remove-empty-scripts to v1.1.1)
+  # pull: 10694 (PR title: Prevent horizontal overflow on script console)
+  # pull: 10695 (PR title: Use secondary text color CSS variable)
+  # pull: 10697 (PR title: Update dependency io.jenkins.plugins:design-library to v388)
+  # pull: 10698 (PR title: Fix FileChannelWriterTest and VirtualFileTest by reverting to JUnit 4)
+  # pull: 10699 (PR title: Revert "Update jackson2-api to v2.19.0-404.vb_b_0fd2fea_e10")
+  # pull: 10700 (PR title: Accept UserIdCause or LegacyCodeCause in disconnectCause test)
+  # pull: 10701 (PR title: Move Jackson 2.19.0 exclusion into packageRule section)
+  # pull: 10702 (PR title: Update dependency @babel/core to v7.27.3)
+  # pull: 10703 (PR title: Update dependency postcss to v8.5.4)
+  # pull: 10704 (PR title: Update dependency postcss-preset-env to v10.2.0)
+  # pull: 10705 (PR title: Update dependency stylelint to v16.20.0)
+  # pull: 10706 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2457)
+  # pull: 10707 (PR title: Update dependency org.jenkins-ci.plugins:structs to v350)
+  # pull: 10709 (PR title: Increase contrast of colorful buttons)
+  # pull: 10710 (PR title: Update dependency com.puppycrawl.tools:checkstyle to v10.25.0)
+  # pull: 10713 (PR title: Fix FileChannelWriterTest and VirtualFileTest for JUnit 5)
+  # pull: 10714 (PR title: Update dependency io.jenkins.plugins:design-library to v392)
+  # pull: 10717 (PR title: Update dependency @babel/core to v7.27.4)
+  # pull: 10718 (PR title: Update eslint monorepo to v9.28.0)
+  # pull: 10719 (PR title: Update dependency sass to v1.89.1)
+
+  - version: '2.514'
+    date: 2025-06-10
+    changes:
+      - type: rfe
+        category: rfe
+        pull: 10721
+        authors:
+          - janfaracik
+        pr_title: Refine dialogs and Command Palette
+        message: |-
+          Refine dialog and <strong>Command Palette</strong> appearances.
+      - type: bug
+        category: bug
+        pull: 10725
+        authors:
+          - mawinter69
+        pr_title: Fix url in search result list when running at root context
+        message: |-
+          Fix URLs in search result list when running at `root` context.
+      - type: bug
+        category: bug
+        pull: 10676
+        issue: 75683
+        authors:
+          - janfaracik
+        pr_title: "[JENKINS-75683] Restore transient view actions"
+        message: |-
+          Restore side panel actions for views.
+
+  # pull: 10582 (PR title: Migrate tests to JUnit5 (test / misc / 4))
+  # pull: 10720 (PR title: Update Winstone and Jetty)
+  # pull: 10723 (PR title: Update stapler.version to v1990 (major))
+  # pull: 10724 (PR title: Update Yarn to v4.9.2)
+  # pull: 10727 (PR title: Update jenkins/ath Docker tag to v6254)
+  # pull: 10728 (PR title: Fill in since annotations)
+  # pull: 10730 (PR title: Update dependency org.apache.maven:maven-core to v3.9.10)
+  # pull: 10732 (PR title: Update dependency postcss-preset-env to v10.2.1)
+
+  - version: '2.515'
+    date: 2025-06-17
+    changes:
+      - type: bug
+        category: bug
+        pull: 10565
+        issue: 68934
+        authors:
+          - janfaracik
+          - krisstern
+        pr_title: "[JENKINS-68934] Replace 'Loading' overlay with skeleton outline
+          on Manage Jenkins pages"
+        message: |-
+          Replace <code>Loading</code> overlay with skeleton outline on Manage Jenkins pages.
+
+  # pull: 10733 (PR title: Update softprops/action-gh-release action to v2.3.2)
+  # pull: 10734 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2460)
+  # pull: 10735 (PR title: Cleanup HudsonPrivateSecurityRealmTest)
+  # pull: 10736 (PR title: Update dependency org.springframework:spring-framework-bom to v6.2.8)
+  # pull: 10737 (PR title: Update dependency sass to v1.89.2)
+  # pull: 10739 (PR title: Update dependency postcss-preset-env to v10.2.2)
+  # pull: 10740 (PR title: Update dependency io.jenkins.plugins:checks-api to v373)
+  # pull: 10741 (PR title: Update jenkins/ath Docker tag to v6260)
+  # pull: 10742 (PR title: Update dependency postcss-preset-env to v10.2.3)
+  # pull: 10743 (PR title: Update dependency postcss to v8.5.5)
+  # pull: 10744 (PR title: Update dawidd6/action-send-mail action to v6)
+  # pull: 10745 (PR title: Update dependency org.jenkins-ci.main:jenkins-test-harness to v2462)
+  # pull: 10746 (PR title: Update commons-fileupload2.version to v2.0.0-M4)
+  # pull: 10748 (PR title: Update eslint monorepo to v9.29.0)
+  # pull: 10750 (PR title: Update dependency org.springframework.security:spring-security-bom to v6.5.1)
+  # pull: 10751 (PR title: Update dependency postcss to v8.5.6)
+
+  - version: '2.516'
+    date: 2025-06-24
+    changes:
+      - type: bug
+        category: bug
+        pull: 10729
+        issue: 75727
+        authors:
+          - jtnord
+        pr_title: "[JENKINS-75727] Distinguish between primary and secondary actions
+          in the header"
+        message: |-
+          Place secondary actions in the collapsing menu instead of displaying them based on screen width.
+      - type: bug
+        category: bug
+        pull: 10678
+        issue: 75683
+        authors:
+          - jtnord
+          - basil
+        pr_title: "[JENKINS-75683] re-introduce actions for Jenkins with custom action.jelly"
+        message: |-
+          Any <code>RootAction</code> that used custom rendering (<code>action.jelly</code>) is once again visible in the header and behaves appropriately.
+          Any <code>RootAction</code> that uses jelly to show/hide is correctly hidden in the header.
+          Any <code>RootAction</code> with sub tasks now shows the subtasks as a dropdown when in the correct context.
+      - type: bug
+        category: bug
+        pull: 10754
+        issue: 75794
+        authors:
+          - janfaracik
+        pr_title: "[JENKINS-75794] Fix CodeMirror content being hidden after skeleton
+          loading"
+        message: |-
+          Do not hide contents of <code>Execute shell</code>, parameter descriptions, and other <code>CodeMirror</code> components after skeleton loading.
+      - type: rfe
+        category: developer
+        pull: 10561
+        authors:
+          - Vlatombe
+          - MarkEWaite
+        pr_title: "Implement SystemProperties.getDuration`"
+        message: |-
+          Developer: System properties can now use flexible time units: <code>30s</code>, <code>3m</code>, <code>1h</code>, <code>2d</code>, etc.
+  
+  # pull: 10753 (PR title: Update dependency org.xmlunit:xmlunit-bom to v2.10.3)
+  # pull: 10757 (PR title: Update dependency org.jenkins-ci.plugins:cloudbees-folder to v6.1026.ve06dfa_cf31c3)
+  # pull: 10758 (PR title: Update jenkins/ath Docker tag to v6266)
+  # pull: 10760 (PR title: start introducing data-testids for test usage)
+  # pull: 10761 (PR title: Update dependency stylelint to v16.21.0)
+  # pull: 10762 (PR title: Update dependency com.puppycrawl.tools:checkstyle to v10.25.1)
+  # pull: 10763 (PR title: Update mheap/github-action-required-labels digest to 8afbe8a)
+  # pull: 10766 (PR title: Update jenkins/ath Docker tag to v6269)
 
 # DO NOT EDIT THIS FILE DIRECTLY ON GITHUB IF YOU HAVE COMMIT ACCESS
 # ALL CHANGES MUST GO THROUGH PULL REQUESTS
